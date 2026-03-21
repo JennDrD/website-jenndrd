@@ -27,6 +27,16 @@
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
+    [data-theme="dark"] {
+      --color-bg: #1c1c1e;
+      --color-text: #e8e4dd;
+      --color-text-secondary: #9e9a92;
+      --color-text-muted: #6b6760;
+      --color-divider: #3a3835;
+      --color-orb-warm: #6b5d3e;
+      --color-orb-cool: #4a5744;
+    }
+
     body {
       font-family: var(--font-sans);
       background: var(--color-bg);
@@ -35,13 +45,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 3rem 1.5rem;
+      padding: 48px 24px;
       line-height: 1.6;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Ambient background color — subtle depth without visual noise */
+    /* Blurred color orbs for ambient depth */
     body::before,
     body::after {
       content: '';
@@ -69,8 +79,6 @@
       left: -80px;
     }
 
-    /* ---- Main content ---- */
-
     .content {
       max-width: 560px;
       width: 100%;
@@ -79,13 +87,13 @@
       animation: fade-up 0.6s ease-out;
     }
 
-    /* ---- Header ---- */
+    /* Header */
 
     .header {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
+      gap: 24px;
+      margin-bottom: 32px;
     }
 
     .avatar {
@@ -98,103 +106,82 @@
 
     .header-text h1 {
       font-family: var(--font-serif);
-      font-size: clamp(1.8rem, 5vw, 2.4rem);
+      font-size: clamp(29px, 5vw, 38px);
       font-weight: 400;
       letter-spacing: -0.02em;
       line-height: 1.1;
     }
 
     .header-text .role {
-      font-size: 0.82rem;
+      font-size: 13px;
       color: var(--color-text-secondary);
-      margin-top: 0.35rem;
+      margin-top: 6px;
       font-weight: 400;
     }
-
-    /* ---- Divider ---- */
 
     .divider {
       width: 36px;
       height: 1px;
       background: var(--color-divider);
-      margin-bottom: 1.75rem;
+      margin-bottom: 28px;
     }
 
-    /* ---- Bio ---- */
-
-    .bio {
-      font-size: 0.92rem;
-      line-height: 1.8;
+    .body-text,
+    .experience-item p {
+      font-size: 15px;
       color: var(--color-text-secondary);
       font-weight: 300;
-      margin-bottom: 2rem;
+      line-height: 1.8;
     }
 
-    /* ---- Sections ---- */
+    .bio {
+      margin-bottom: 32px;
+    }
+
+    /* Sections */
 
     .section {
-      margin-bottom: 2rem;
+      margin-bottom: 32px;
     }
 
     .section-title {
-      font-size: 0.65rem;
+      font-size: 10px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       color: var(--color-text-muted);
-      margin-bottom: 1rem;
+      margin-bottom: 16px;
     }
-
-    /* ---- Experience ---- */
 
     .experience-list {
       display: flex;
       flex-direction: column;
-      gap: 1.35rem;
+      gap: 22px;
     }
 
     .experience-item strong {
       font-family: var(--font-serif);
-      font-size: 0.95rem;
+      font-size: 17px;
       font-weight: 400;
       color: var(--color-text);
       display: block;
-      margin-bottom: 0.25rem;
+      margin-bottom: 4px;
     }
 
-    .experience-item p {
-      font-size: 0.84rem;
-      color: var(--color-text-secondary);
-      font-weight: 300;
-      line-height: 1.65;
-    }
-
-    /* ---- Volunteering ---- */
-
-    .volunteering {
-      font-size: 0.86rem;
-      color: var(--color-text-secondary);
-      font-weight: 300;
-      line-height: 1.75;
-      border-left: 2px solid var(--color-divider);
-      padding-left: 1.1rem;
-    }
-
-    /* ---- Contact links ---- */
+    /* Contact */
 
     .contact-links {
       display: flex;
-      gap: 0.6rem;
+      gap: 10px;
       flex-wrap: wrap;
-      margin-top: 2.5rem;
+      margin-top: 40px;
     }
 
     .contact-link {
-      font-family: var(--font-sans);
-      font-size: 0.8rem;
+      font-size: 13px;
       font-weight: 500;
       text-decoration: none;
-      padding: 0.55rem 1.3rem;
+      padding: 9px 21px;
       border-radius: 8px;
       border: 1px solid var(--color-divider);
       color: var(--color-text-secondary);
@@ -218,8 +205,29 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
     }
 
+    /* Theme toggle */
 
-    /* ---- Animation ---- */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      padding: 6px;
+      opacity: 0.4;
+      transition: opacity 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .theme-toggle:hover {
+      opacity: 0.8;
+    }
+
+    /* Animations */
 
     @keyframes fade-up {
       from { opacity: 0; transform: translateY(16px); }
@@ -237,6 +245,7 @@
       transform: translateY(0);
     }
 
+    /* Respect user motion preferences */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -244,16 +253,15 @@
       }
     }
 
-    /* ---- Mobile ---- */
-
     @media (max-width: 520px) {
-      body { padding: 2rem 1.25rem; }
-      .header { gap: 1.1rem; }
+      body { padding: 32px 20px; }
+      .header { gap: 18px; }
       .avatar { width: 66px; height: 66px; }
     }
   </style>
 </head>
 <body>
+  <button class="theme-toggle" aria-label="Toggle dark mode">☀️</button>
   <main class="content">
 
     <div class="header">
@@ -266,8 +274,8 @@
 
     <div class="divider" aria-hidden="true"></div>
 
-    <p class="bio fade-in">
-      Hey, thanks for coming here! Nice to e-meet you. I'm a Digital Marketer based in Switzerland, focused on paid campaigns, tracking, data analytics, and automation.
+    <p class="body-text bio fade-in">
+      Hey, thanks for coming here! Nice to e-meet you. I'm a Digital Marketer based in Switzerland. I run paid campaigns, set up tracking, wrangle data into insights, and automate what shouldn't be done by hand.
     </p>
 
     <section class="section fade-in">
@@ -275,18 +283,32 @@
       <div class="experience-list">
         <div class="experience-item">
           <strong>Digital Campaigns Specialist · Romande Energie</strong>
-          <p>I run paid campaigns, define and implement tracking plans (including consent management) across 30+ platforms, and build dashboards and A/B tests on landing pages. All to help accelerate the energy transition.</p>
+          <p>I run paid campaigns across Google Ads, Meta, and LinkedIn, define and implement tracking plans including consent management, build landing pages, and consolidate scattered data sources into dashboards and actionable reporting.</p>
         </div>
         <div class="experience-item">
           <strong>Digital Fundraiser · Médecins Sans Frontières</strong>
-          <p>Five years in Geneva running acquisition and conversion campaigns to support online fundraising for medical operations in conflict zones, epidemics, and humanitarian crises.</p>
+          <p>Online fundraising campaigns across search, display, email, and social. Landing pages, tracking, donor journey optimization, automated reporting, and performance analysis.</p>
         </div>
       </div>
     </section>
 
     <section class="section fade-in">
+      <h2 class="section-title">Previously</h2>
+      <p class="body-text">
+        Digital marketing in agency before going in-house.
+      </p>
+    </section>
+
+    <section class="section fade-in">
+      <h2 class="section-title">Stack</h2>
+      <p class="body-text">
+        Google Ads · Meta Ads · LinkedIn Ads · Google Analytics · GTM · Looker Studio · R · Supermetrics · Make · n8n · Zapier · Unbounce · AI/automation
+      </p>
+    </section>
+
+    <section class="section fade-in">
       <h2 class="section-title">Volunteering</h2>
-      <p class="volunteering">
+      <p class="body-text">
         If you're a small NGO/NPO needing help with your digital communication or digital fundraising, let me know. I dedicate some of my spare time to help causes I care about, especially animal welfare and nature conservation. ❤️
       </p>
     </section>
@@ -294,18 +316,41 @@
     <nav class="contact-links fade-in" aria-label="Contact links">
       <a href="https://www.linkedin.com/in/jenndrd/" class="contact-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a href="https://github.com/JennDrD" class="contact-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="mailto:durand.jennifer+ws@pm.me" class="contact-link">Email</a>
+      <a href="https://www.instagram.com/jenndrd/" class="contact-link" target="_blank" rel="noopener noreferrer">Instagram</a>
     </nav>
 
   </main>
 
   <script>
+    /* Reveal sections on scroll */
     document.querySelectorAll('.fade-in').forEach(function(element) {
       new IntersectionObserver(function(entries) {
         if (entries[0].isIntersecting) {
           entries[0].target.classList.add('visible');
         }
       }, { threshold: 0.1 }).observe(element);
+    });
+
+    /* Dark mode: respect system preference, remember user choice */
+    var toggle = document.querySelector('.theme-toggle');
+    var saved = localStorage.getItem('theme');
+
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      toggle.textContent = '🌙';
+    }
+
+    toggle.addEventListener('click', function() {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        toggle.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggle.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
     });
   </script>
 </body>
