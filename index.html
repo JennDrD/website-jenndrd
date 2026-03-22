@@ -317,27 +317,27 @@
       }, { threshold: 0.1 }).observe(element);
     });
 
-    /* Dark mode: respect system preference, remember user choice */
     var toggle = document.querySelector('.theme-toggle');
     var saved = localStorage.getItem('theme');
 
-    /* Default is dark (set in HTML). Switch to light only if user previously chose it */
-    if (saved === 'light') {
-      document.documentElement.removeAttribute('data-theme');
-      toggle.textContent = '☀️';
-    }
-
-    toggle.addEventListener('click', function() {
-      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      if (isDark) {
+    function applyTheme(theme) {
+      if (theme === 'light') {
         document.documentElement.removeAttribute('data-theme');
         toggle.textContent = '☀️';
-        localStorage.setItem('theme', 'light');
       } else {
         document.documentElement.setAttribute('data-theme', 'dark');
         toggle.textContent = '🌙';
-        localStorage.setItem('theme', 'dark');
       }
+    }
+
+    /* Default is dark (set in HTML). Switch to light only if user previously chose it */
+    applyTheme(saved === 'light' ? 'light' : 'dark');
+
+    toggle.addEventListener('click', function() {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      var next = isDark ? 'light' : 'dark';
+      localStorage.setItem('theme', next);
+      applyTheme(next);
     });
   </script>
 </body>
