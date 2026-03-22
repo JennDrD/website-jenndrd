@@ -7,7 +7,7 @@
   <title>Jennifer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -20,6 +20,7 @@
       --color-text: #1c1c1e;
       --color-text-secondary: #5a5a5e;
       --color-text-muted: #8e8e93;
+      --color-accent: #FF0066;
       --color-divider: #d4cfc7;
       --color-orb-warm: #c9b99a;
       --color-orb-cool: #a8b5a0;
@@ -28,11 +29,11 @@
     }
 
     [data-theme="dark"] {
-      --color-bg: #1c1c1e;
+      --color-bg: #141413;
       --color-text: #e8e4dd;
       --color-text-secondary: #9e9a92;
       --color-text-muted: #6b6760;
-      --color-divider: #3a3835;
+      --color-divider: #2a2826;
       --color-orb-warm: #6b5d3e;
       --color-orb-cool: #4a5744;
     }
@@ -59,7 +60,7 @@
       position: fixed;
       border-radius: 50%;
       filter: blur(100px);
-      opacity: 0.3;
+      opacity: 0.25;
       z-index: 0;
       pointer-events: none;
     }
@@ -81,96 +82,103 @@
     }
 
     .content {
-      max-width: 560px;
+      max-width: 600px;
       width: 100%;
       position: relative;
       z-index: 1;
       animation: fade-up 0.6s ease-out;
     }
 
-    /* Header */
+    /* Header — small, understated */
 
     .header {
       display: flex;
       align-items: center;
-      gap: 24px;
-      margin-bottom: 32px;
+      gap: 16px;
+      margin-bottom: 48px;
     }
 
     .avatar {
-      width: 82px;
-      height: 82px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       object-fit: cover;
       flex-shrink: 0;
     }
 
-    .header-text h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(29px, 5vw, 38px);
-      font-weight: 400;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-    }
-
-    .header-text .role {
+    .header-text {
       font-size: 13px;
       color: var(--color-text-secondary);
-      margin-top: 6px;
       font-weight: 400;
+      letter-spacing: 0.02em;
       transition: color 0.3s ease;
     }
 
-    .divider {
-      width: 36px;
-      height: 1px;
-      background-color: var(--color-divider);
-      margin-bottom: 28px;
-      transition: background-color 0.3s ease;
+    /* Hero statement — bold editorial */
+
+    .hero-statement {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 7vw, 48px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
     }
 
-    .body-text,
-    .experience-item p {
+    .hero-subtitle {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-accent);
+      letter-spacing: 0.03em;
+      margin-bottom: 48px;
+      transition: color 0.3s ease;
+    }
+
+    /* Divider — accent colored */
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background-color: var(--color-accent);
+      margin-bottom: 40px;
+    }
+
+    /* Body text */
+
+    .body-text {
       font-size: 15px;
       color: var(--color-text-secondary);
       font-weight: 300;
-      line-height: 1.8;
+      line-height: 1.85;
       transition: color 0.3s ease;
     }
 
-    .bio {
-      margin-bottom: 32px;
+    .body-text + .body-text {
+      margin-top: 24px;
     }
 
-    /* Sections */
-
-    .section {
-      margin-bottom: 32px;
-    }
-
-    .section-title {
-      font-size: 10px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
+    .previously {
+      margin-top: 24px;
+      font-size: 14px;
       color: var(--color-text-muted);
-      margin-bottom: 16px;
+      font-weight: 300;
+      font-style: italic;
       transition: color 0.3s ease;
     }
 
-    .experience-list {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
+    /* Volunteering */
+
+    .volunteering-section {
+      margin-top: 48px;
+      padding-left: 20px;
+      border-left: 2px solid var(--color-accent);
     }
 
-    .experience-item strong {
-      font-family: var(--font-serif);
-      font-size: 17px;
-      font-weight: 400;
-      color: var(--color-text);
-      display: block;
-      margin-bottom: 4px;
+    .volunteering-section p {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      font-weight: 300;
+      line-height: 1.8;
       transition: color 0.3s ease;
     }
 
@@ -180,14 +188,14 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-top: 40px;
+      margin-top: 48px;
     }
 
     .contact-link {
       font-size: 13px;
       font-weight: 500;
       text-decoration: none;
-      padding: 9px 21px;
+      padding: 10px 22px;
       border-radius: 8px;
       border: 1px solid var(--color-divider);
       color: var(--color-text-secondary);
@@ -201,7 +209,7 @@
 
     .contact-link:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
       background: var(--color-text);
       border-color: var(--color-text);
       color: var(--color-bg);
@@ -209,7 +217,7 @@
 
     .contact-link:active {
       transform: translateY(0);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     /* Theme toggle */
@@ -243,7 +251,7 @@
 
     .fade-in {
       opacity: 0;
-      transform: translateY(12px);
+      transform: translateY(14px);
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
@@ -262,8 +270,8 @@
 
     @media (max-width: 520px) {
       body { padding: 32px 20px; }
-      .header { gap: 18px; }
-      .avatar { width: 66px; height: 66px; }
+      .header { gap: 12px; }
+      .avatar { width: 40px; height: 40px; }
     }
   </style>
 </head>
@@ -272,31 +280,25 @@
   <main class="content">
 
     <div class="header">
-      <img src="jd.png" alt="Jennifer" class="avatar" width="82" height="82">
-      <div class="header-text">
-        <h1>Jennifer</h1>
-        <div class="role">Digital Marketer · Switzerland</div>
-      </div>
+      <img src="jd.png" alt="Jennifer" class="avatar" width="48" height="48">
+      <div class="header-text">Jennifer · Digital Marketer · Switzerland</div>
     </div>
+
+    <h1 class="hero-statement fade-in">I love tech.<br>Always have.</h1>
+    <p class="hero-subtitle fade-in">Code, data, AI, automation.</p>
 
     <div class="divider" aria-hidden="true"></div>
 
-    <p class="body-text bio fade-in">
-      I love tech. Always have. Code, data, AI, automation. Understanding how things work, then making them work better.
-    </p>
-
-    <p class="body-text bio fade-in">
+    <p class="body-text fade-in">
       I run paid campaigns, tracking, and landing pages at a Swiss energy company. I speak both marketing and code. I also wrangle data, build dataviz and dashboards, and automate reporting to make it all actually speak. More MVP, less PowerPoint.
     </p>
 
-    <p class="body-text bio fade-in">
+    <p class="previously fade-in">
       Previously: digital fundraiser at Médecins Sans Frontières in Geneva. Agency before that.
     </p>
 
-    <section class="section fade-in">
-      <p class="body-text volunteering">
-        Small NGO needing help with digital communication or fundraising? I dedicate spare time to causes I care about, especially animal welfare and nature conservation. Write me.
-      </p>
+    <section class="volunteering-section fade-in">
+      <p>Small NGO needing help with digital communication or fundraising? I dedicate spare time to causes I care about, especially animal welfare and nature conservation. Write me.</p>
     </section>
 
     <nav class="contact-links fade-in" aria-label="Contact links">
@@ -308,7 +310,6 @@
   </main>
 
   <script>
-    /* Reveal sections on scroll */
     document.querySelectorAll('.fade-in').forEach(function(element) {
       new IntersectionObserver(function(entries) {
         if (entries[0].isIntersecting) {
