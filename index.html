@@ -20,7 +20,6 @@
       --color-text: #1c1c1e;
       --color-text-secondary: #5a5a5e;
       --color-text-muted: #8e8e93;
-      --color-accent: #FF0066;
       --color-divider: #d4cfc7;
       --color-orb-warm: #c9b99a;
       --color-orb-cool: #a8b5a0;
@@ -89,8 +88,6 @@
       animation: fade-up 0.6s ease-out;
     }
 
-    /* Header — small, understated */
-
     .header {
       display: flex;
       align-items: center;
@@ -114,8 +111,6 @@
       transition: color 0.3s ease;
     }
 
-    /* Hero statement — bold editorial */
-
     .hero-statement {
       font-family: var(--font-serif);
       font-size: clamp(32px, 7vw, 48px);
@@ -132,22 +127,13 @@
     .hero-subtitle {
       font-size: 15px;
       font-weight: 500;
-      color: var(--color-accent);
       letter-spacing: 0.03em;
       margin-bottom: 48px;
-      transition: color 0.3s ease;
+      background: linear-gradient(90deg, #FF0066, #D946A8, #6336C4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
-
-    /* Divider — accent colored */
-
-    .divider {
-      width: 40px;
-      height: 2px;
-      background-color: var(--color-accent);
-      margin-bottom: 40px;
-    }
-
-    /* Body text */
 
     .body-text {
       font-size: 15px;
@@ -159,22 +145,6 @@
 
     .body-text + .body-text {
       margin-top: 24px;
-    }
-
-    /* Volunteering */
-
-    .volunteering-section {
-      margin-top: 24px;
-      padding-left: 20px;
-      border-left: 2px solid var(--color-accent);
-    }
-
-    .volunteering-section p {
-      font-size: 14px;
-      color: var(--color-text-secondary);
-      font-weight: 300;
-      line-height: 1.8;
-      transition: color 0.3s ease;
     }
 
     /* Contact */
@@ -215,8 +185,6 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
-    /* Theme toggle */
-
     .theme-toggle {
       position: fixed;
       top: 20px;
@@ -237,8 +205,6 @@
       opacity: 0.8;
     }
 
-    /* Animations */
-
     @keyframes fade-up {
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -255,7 +221,6 @@
       transform: translateY(0);
     }
 
-    /* Respect user motion preferences */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -282,8 +247,6 @@
     <h1 class="hero-statement fade-in">Marketing without the fluff.</h1>
     <p class="hero-subtitle fade-in">Data, AI, automation, and a bit of code.</p>
 
-    <div class="divider" aria-hidden="true"></div>
-
     <p class="body-text fade-in">
       I run paid campaigns and all the tracking behind them at a Swiss energy company. I speak both marketing and code. R pipelines that feed dashboards, automations that keep things running without me. I make data talk.
     </p>
@@ -296,9 +259,9 @@
       Previously: digital fundraiser at Médecins Sans Frontières. Agency before that.
     </p>
 
-    <section class="volunteering-section fade-in">
-      <p>Small NGO needing help with digital communication or fundraising? I dedicate spare time to causes I care about, especially animal welfare and nature conservation. Write me.</p>
-    </section>
+    <p class="body-text fade-in">
+      Small NGO needing help with digital communication or fundraising? I dedicate spare time to causes I care about, especially animal welfare and nature conservation. Write me.
+    </p>
 
     <nav class="contact-links fade-in" aria-label="Contact links">
       <a href="https://www.linkedin.com/in/jenndrd/" class="contact-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
