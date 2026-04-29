@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Jennifer · Digital Marketer based in Switzerland. Paid campaigns, tracking, data, automation.">
-  <title>Jennifer</title>
+  <title>Jennifer Durand · Technical Marketing</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@300;400;500&display=swap" rel="stylesheet">
@@ -16,28 +16,34 @@
     }
 
     :root {
-      --color-bg: #ede8df;
-      --color-text: #1a1a18;
-      --color-text-secondary: #55524d;
-      --color-divider: #d0c9bf;
-      --color-accent: oklch(57% 0.24 0);
-      --color-accent-glow: oklch(57% 0.24 0 / 0.15);
-      --color-orb-warm: oklch(78% 0.14 0);
-      --color-orb-cool: oklch(72% 0.09 330);
-      --orb-opacity: 0.25;
+      color-scheme: light;
+      --color-bg: oklch(92% 0.018 75);
+      --color-text: oklch(18% 0.01 75);
+      --color-text-secondary: oklch(37% 0.018 75);
+      --color-divider: oklch(78% 0.018 75);
+      --color-accent: #FF0066;
+      --color-accent-hover: color-mix(in oklch, var(--color-accent) 86%, var(--color-text) 14%);
+      --color-button-bg: transparent;
+      --color-button-hover-bg: color-mix(in oklch, var(--color-accent) 12%, transparent);
+      --color-button-hover-text: var(--color-text);
+      --color-grid: oklch(64% 0.02 75 / 0.14);
+      --color-focus: color-mix(in oklch, var(--color-accent) 38%, transparent);
       --body-weight: 400;
       --font-display: 'Gloock', Georgia, serif;
       --font: 'Figtree', system-ui, sans-serif;
     }
 
     [data-theme="dark"] {
-      --color-bg: #141412;
-      --color-text: #eae6df;
-      --color-text-secondary: #9a9690;
-      --color-divider: #2b2926;
-      --color-orb-warm: oklch(42% 0.16 0);
-      --color-orb-cool: oklch(34% 0.09 330);
-      --orb-opacity: 0.22;
+      color-scheme: dark;
+      --color-bg: oklch(18% 0.012 75);
+      --color-text: oklch(91% 0.018 75);
+      --color-text-secondary: oklch(70% 0.018 75);
+      --color-divider: oklch(30% 0.014 75);
+      --color-accent-hover: color-mix(in oklch, var(--color-accent) 88%, var(--color-text) 12%);
+      --color-button-hover-bg: color-mix(in oklch, var(--color-accent) 14%, transparent);
+      --color-button-hover-text: var(--color-accent);
+      --color-grid: oklch(78% 0.018 75 / 0.08);
+      --color-focus: color-mix(in oklch, var(--color-accent) 40%, transparent);
       --body-weight: 300;
     }
 
@@ -46,46 +52,32 @@
       background-color: var(--color-bg);
       color: var(--color-text);
       min-height: 100vh;
-      padding: 80px 40px;
+      padding: clamp(40px, 7vw, 80px) clamp(18px, 4vw, 40px);
       line-height: 1.6;
       position: relative;
       overflow-x: hidden;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    body::before,
-    body::after {
+    body::before {
       content: '';
       position: fixed;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: var(--orb-opacity);
+      inset: 0;
+      background:
+        linear-gradient(90deg, var(--color-grid) 1px, transparent 1px),
+        linear-gradient(var(--color-grid) 1px, transparent 1px);
+      background-size: 42px 42px;
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.58), transparent 68%);
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.58), transparent 68%);
       z-index: 0;
       pointer-events: none;
     }
 
-    body::before {
-      width: 500px;
-      height: 500px;
-      background: var(--color-orb-warm);
-      top: -250px;
-      right: -200px;
-    }
-
-    body::after {
-      width: 400px;
-      height: 400px;
-      background: var(--color-orb-cool);
-      bottom: -120px;
-      left: -100px;
-    }
-
     .content {
-      max-width: 640px;
+      max-width: 660px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
-      animation: fade-up 0.5s ease-out;
     }
 
     .header {
@@ -105,9 +97,10 @@
     .header-text {
       font-size: 12px;
       font-weight: 400;
-      letter-spacing: 0.04em;
+      letter-spacing: 0;
       color: var(--color-text-secondary);
       transition: color 0.3s ease;
+      min-width: 0;
     }
 
     .hero-statement {
@@ -115,7 +108,7 @@
       font-size: clamp(30px, 5vw, 44px);
       font-weight: 400;
       line-height: 1.1;
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
       color: var(--color-accent);
       margin-bottom: 20px;
     }
@@ -159,11 +152,6 @@
       margin: 0 0 48px;
     }
 
-    .contact-link--primary {
-      border-color: var(--color-accent);
-      color: var(--color-accent);
-    }
-
     .contact-links {
       display: flex;
       gap: 8px;
@@ -174,13 +162,18 @@
     .contact-link {
       font-size: 13px;
       font-weight: 500;
-      letter-spacing: 0.01em;
+      letter-spacing: 0;
       text-decoration: none;
-      padding: 9px 20px;
+      min-height: 44px;
+      flex: 1 1 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
       border-radius: 6px;
-      border: 1px solid var(--color-divider);
+      border: 1px solid transparent;
       color: var(--color-text-secondary);
-      background: transparent;
+      background: var(--color-button-bg);
       transition: transform 0.15s ease,
                   box-shadow 0.15s ease,
                   background-color 0.15s ease,
@@ -190,123 +183,174 @@
 
     .contact-link:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 20px var(--color-accent-glow);
-      background: var(--color-accent);
-      border-color: var(--color-accent);
-      color: oklch(99% 0.005 0);
+      background: var(--color-button-hover-bg);
+      border-color: transparent;
+      color: var(--color-button-hover-text);
     }
 
     .contact-link:active {
       transform: translateY(0);
-      box-shadow: 0 2px 8px var(--color-accent-glow);
+    }
+
+    .contact-link:focus-visible,
+    .theme-toggle:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 3px;
     }
 
     .theme-toggle {
       position: fixed;
-      top: 24px;
-      right: 24px;
+      top: 18px;
+      right: 18px;
       z-index: 10;
-      background: none;
-      border: none;
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      color: var(--color-text);
       cursor: pointer;
-      font-size: 18px;
-      padding: 6px;
-      opacity: 0.65;
-      transition: opacity 0.15s ease;
+      transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease, background-color 0.15s ease;
       -webkit-tap-highlight-color: transparent;
     }
 
-    .theme-toggle:hover { opacity: 1; }
-
-    @keyframes fade-up {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+    .theme-toggle:hover {
+      color: var(--color-accent);
+      transform: translateY(-1px);
     }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
+    .theme-toggle:active {
       transform: translateY(0);
+    }
+
+    .theme-toggle__icon {
+      width: 18px;
+      height: 18px;
+      border: 2px solid currentColor;
+      border-radius: 999px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .theme-toggle__icon::after {
+      content: '';
+      position: absolute;
+      inset: -2px -2px -2px 50%;
+      background: currentColor;
+    }
+
+    [data-theme="dark"] .theme-toggle__icon::after {
+      inset: -2px 50% -2px -2px;
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
+        animation: none !important;
+        transition: none !important;
       }
     }
 
     @media (max-width: 520px) {
-      body { padding: 48px 20px; }
-      .header { margin-bottom: 56px; }
+      body { padding: 34px 18px 40px; }
+
+      .content { max-width: none; }
+
+      .header {
+        gap: 12px;
+        margin-bottom: 38px;
+        padding-right: 52px;
+      }
+
+      .hero-statement {
+        font-size: clamp(32px, 10vw, 40px);
+        margin-bottom: 14px;
+      }
+
+      .hero-subtitle {
+        font-size: 17px;
+        line-height: 1.5;
+        margin-bottom: 34px;
+      }
+
+      .section-rule { margin-bottom: 34px; }
+
+      .body-text {
+        font-size: 15px;
+        line-height: 1.75;
+      }
+
+      .contact-links {
+        margin-top: 42px;
+        gap: 10px;
+      }
+
+      .contact-link {
+        padding-inline: 12px;
+      }
     }
   </style>
 </head>
 <body>
-  <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+  <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="true">
+    <span class="theme-toggle__icon" aria-hidden="true"></span>
+  </button>
   <main class="content">
 
-    <div class="header fade-in">
+    <div class="header">
       <img src="jd.png" alt="Jennifer" class="avatar" width="40" height="40">
       <div class="header-text">Jennifer · Digital Marketer · Switzerland</div>
     </div>
 
-    <h1 class="hero-statement fade-in">Marketing without the fluff.</h1>
-    <p class="hero-subtitle fade-in">Data, AI, automation, and a bit of code.</p>
+    <h1 class="hero-statement">Marketing without the fluff.</h1>
+    <p class="hero-subtitle">Data, AI, automation, and a bit of code.</p>
 
-    <hr class="section-rule fade-in">
+    <hr class="section-rule">
 
-    <p class="body-text fade-in">
+    <p class="body-text">
       I live with our cats who are very much in charge, a husband, and a dog still figuring out where he stands. Most weekends we're in the forest.
     </p>
 
-    <p class="body-text fade-in">
+    <p class="body-text">
       At a Swiss energy company, I run paid campaigns and everything behind them: tracking, R to wrangle data, dashboards, automations that run on their own. More MVP, less PowerPoint.
     </p>
 
-    <p class="body-text fade-in">
+    <p class="body-text">
       Previously: digital fundraiser at Médecins Sans Frontières. Agency before that.
     </p>
 
-    <p class="body-text fade-in">
+    <p class="body-text">
       Small NGO needing help with digital communication or fundraising? I dedicate spare time to causes I care about, especially animal welfare and nature conservation. Write me.
     </p>
 
-    <nav class="contact-links fade-in" aria-label="Contact links">
+    <nav class="contact-links" aria-label="Contact links">
       <a href="https://www.linkedin.com/in/jenndrd/" class="contact-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a href="https://github.com/JennDrD" class="contact-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="mailto:durand.jennifer+ws@pm.me" class="contact-link contact-link--primary">Email</a>
+      <a href="mailto:durand.jennifer+ws@pm.me" class="contact-link">Email</a>
     </nav>
 
   </main>
 
   <script>
-    document.querySelectorAll('.fade-in').forEach((el) => {
-      new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) el.classList.add('visible');
-      }, { threshold: 0.1 }).observe(el);
-    });
-
     const toggle = document.querySelector('.theme-toggle');
 
     function applyTheme(theme) {
       if (theme === 'light') {
         document.documentElement.removeAttribute('data-theme');
-        toggle.textContent = '☀️';
+        toggle.setAttribute('aria-label', 'Switch to dark mode');
+        toggle.setAttribute('aria-pressed', 'false');
       } else {
         document.documentElement.setAttribute('data-theme', 'dark');
-        toggle.textContent = '🌙';
+        toggle.setAttribute('aria-label', 'Switch to light mode');
+        toggle.setAttribute('aria-pressed', 'true');
       }
     }
 
     let saved;
     try { saved = localStorage.getItem('theme'); } catch (_) {}
-    applyTheme(saved === 'dark' ? 'dark' : 'light');
+    applyTheme(saved || 'dark');
 
     toggle.addEventListener('click', () => {
       const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
