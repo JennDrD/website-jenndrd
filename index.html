@@ -5,46 +5,64 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jennifer Durand - Digital Marketer</title>
 <meta name="description" content="Jennifer Durand, Digital Marketer basée à Morges. Acquisition de trafic payant, tracking, dashboards, données et automatisation.">
-<link rel="icon" href="jd.png">
+<link rel="icon" href="jd-92.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jenndrd.me/">
+<meta property="og:locale" content="fr_CH">
+<meta property="og:site_name" content="Jennifer Durand">
+<meta property="og:title" content="Jennifer Durand - Digital Marketer">
+<meta property="og:description" content="Marketing without the fluff. Acquisition de trafic payant, tracking, dashboards, données et automatisation.">
+<meta property="og:image" content="https://jenndrd.me/jd.png">
+<meta property="og:image:width" content="315">
+<meta property="og:image:height" content="315">
+<meta property="og:image:alt" content="Portrait de Jennifer Durand">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Gloock&family=Martian+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#fbfbfa; --ink:#1c1d20; --body:#33353a; --muted:#8a8d94; --label:#a9a7a0;
     --line:#ece9e4; --btn-border:#dcdbd7; --accent:#ff0066;
-    --sans:'Space Grotesk',system-ui,sans-serif;
-    --mono:'IBM Plex Mono',ui-monospace,monospace;
-    --serif:'Instrument Serif',Georgia,serif;
+    --accent-soft:rgba(255,0,102,.18); --accent-mark:rgba(255,0,102,.3); --btn-bg:#fff;
+    --sans:'Atkinson Hyperlegible',system-ui,sans-serif;
+    --mono:'Martian Mono',ui-monospace,monospace;
+    --serif:'Gloock',Georgia,serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
+  html{color-scheme:light}
   html,body{background:var(--bg)}
-  ::selection{background:rgba(255,0,102,.18)}
+  ::selection{background:var(--accent-soft)}
   a{color:var(--accent);text-decoration:none}
   body{color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
   .page{min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:88px 24px 80px}
   .col{width:100%;max-width:568px}
   .id{display:flex;align-items:center;gap:14px}
   .id img{width:46px;height:46px;object-fit:cover;border-radius:50%;display:block}
-  .id .name{font-size:15px;font-weight:500;color:var(--ink)}
-  .id .role{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-top:2px}
-  h1{margin-top:30px;font-family:var(--serif);font-size:46px;font-weight:400;line-height:1.04;letter-spacing:-.01em;color:var(--accent)}
-  .sub{margin-top:14px;font-family:var(--mono);font-size:14px;color:var(--muted)}
+  .id .name{font-size:15px;font-weight:700;color:var(--ink)}
+  .id .role{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:2px}
+  h1{margin-top:30px;font-family:var(--serif);font-size:46px;font-weight:400;line-height:1.05;letter-spacing:-.01em;color:var(--accent)}
+  .sub{margin-top:14px;font-family:var(--mono);font-size:12.5px;color:var(--muted)}
   .bio{margin-top:40px;display:flex;flex-direction:column;gap:18px;font-size:16px;line-height:1.62;color:var(--body)}
-  .bio strong{font-weight:inherit;background-image:linear-gradient(rgba(255,0,102,.3),rgba(255,0,102,.3));background-repeat:no-repeat;background-position:0 88%;background-size:100% .32em}
+  .bio strong{font-weight:inherit;background-image:linear-gradient(var(--accent-mark),var(--accent-mark));background-repeat:no-repeat;background-position:0 88%;background-size:100% .32em}
   .vol{margin-top:34px;padding-top:28px;border-top:1px solid var(--line)}
-  .label{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--label);margin-bottom:12px}
+  .label{font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--label);margin-bottom:12px}
   .vol p{font-size:16px;line-height:1.62;color:var(--body)}
   .ctas{margin-top:38px;display:flex;gap:10px;flex-wrap:wrap}
-  .ctas a{flex:1;min-width:120px;text-align:center;padding:11px 0;border-radius:8px;border:1px solid var(--btn-border);background:#fff;color:var(--ink);font-family:var(--mono);font-size:14px;transition:border-color .15s,color .15s}
+  .ctas a{flex:1;min-width:120px;text-align:center;padding:11px 0;border-radius:8px;border:1px solid var(--btn-border);background:var(--btn-bg);color:var(--ink);font-family:var(--mono);font-size:12.5px;transition:border-color .15s,color .15s}
   .ctas a:hover,.ctas a:focus-visible{border-color:var(--accent);color:var(--accent)}
+  @media print{
+    .page{padding:0}
+    .ctas a{border:none;padding:0;text-align:left;min-width:0;flex:0 0 auto;margin-right:18px}
+    .ctas a::after{content:" (" attr(href) ")";color:var(--muted)}
+  }
 </style>
 </head>
 <body>
 <main class="page">
   <div class="col">
     <header class="id">
-      <img src="jd.png" alt="Jennifer Durand" width="46" height="46">
+      <img src="jd-92.png" alt="" width="46" height="46">
       <div>
         <div class="name">Jennifer Durand</div>
         <div class="role">Digital Marketer. Basée à Morges. Chez mes chats.</div>
@@ -66,7 +84,7 @@
       <p>Vous êtes une (petite) organisation, ONG ou association, active pour la protection animale, et vous avez besoin d'aide en communication digitale ou en levée de fonds&#8239;? Écrivez-moi. Je dédie du temps libre aux causes qui me tiennent à cœur.</p>
     </section>
 
-    <nav class="ctas">
+    <nav class="ctas" aria-label="Contact">
       <a href="mailto:durand.jennifer+ws@pm.me">Email</a>
       <a href="https://www.linkedin.com/in/jenndrd/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/JennDrD" target="_blank" rel="noopener">GitHub</a>
