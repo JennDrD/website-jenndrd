@@ -1,362 +1,77 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Jennifer · Digital Marketer based in Switzerland. Paid campaigns, tracking, data, automation.">
-  <title>Jennifer Durand · Technical Marketing</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      color-scheme: light;
-      --color-bg: oklch(92% 0.018 75);
-      --color-text: oklch(18% 0.01 75);
-      --color-text-secondary: oklch(37% 0.018 75);
-      --color-divider: oklch(78% 0.018 75);
-      --color-accent: #FF0066;
-      --color-accent-hover: color-mix(in oklch, var(--color-accent) 86%, var(--color-text) 14%);
-      --color-button-bg: transparent;
-      --color-button-hover-bg: color-mix(in oklch, var(--color-accent) 12%, transparent);
-      --color-button-hover-text: var(--color-text);
-      --color-grid: oklch(64% 0.02 75 / 0.14);
-      --color-focus: color-mix(in oklch, var(--color-accent) 38%, transparent);
-      --body-weight: 400;
-      --font-display: 'Gloock', Georgia, serif;
-      --font: 'Figtree', system-ui, sans-serif;
-    }
-
-    [data-theme="dark"] {
-      color-scheme: dark;
-      --color-bg: oklch(18% 0.012 75);
-      --color-text: oklch(91% 0.018 75);
-      --color-text-secondary: oklch(70% 0.018 75);
-      --color-divider: oklch(30% 0.014 75);
-      --color-accent-hover: color-mix(in oklch, var(--color-accent) 88%, var(--color-text) 12%);
-      --color-button-hover-bg: color-mix(in oklch, var(--color-accent) 14%, transparent);
-      --color-button-hover-text: var(--color-accent);
-      --color-grid: oklch(78% 0.018 75 / 0.08);
-      --color-focus: color-mix(in oklch, var(--color-accent) 40%, transparent);
-      --body-weight: 300;
-    }
-
-    body {
-      font-family: var(--font);
-      background-color: var(--color-bg);
-      color: var(--color-text);
-      min-height: 100vh;
-      padding: clamp(40px, 7vw, 80px) clamp(18px, 4vw, 40px);
-      line-height: 1.6;
-      position: relative;
-      overflow-x: hidden;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        linear-gradient(90deg, var(--color-grid) 1px, transparent 1px),
-        linear-gradient(var(--color-grid) 1px, transparent 1px);
-      background-size: 42px 42px;
-      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.58), transparent 68%);
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.58), transparent 68%);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .content {
-      max-width: 660px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 80px;
-    }
-
-    .avatar {
-      width: 40px;
-      height: 40px;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-
-    .header-text {
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0;
-      color: var(--color-text-secondary);
-      transition: color 0.3s ease;
-      min-width: 0;
-    }
-
-    .hero-statement {
-      font-family: var(--font-display);
-      font-size: clamp(30px, 5vw, 44px);
-      font-weight: 400;
-      line-height: 1.1;
-      letter-spacing: 0;
-      color: var(--color-accent);
-      margin-bottom: 20px;
-    }
-
-    .hero-subtitle {
-      font-size: 18px;
-      font-weight: var(--body-weight);
-      line-height: 1.6;
-      color: var(--color-text-secondary);
-      margin-bottom: 56px;
-    }
-
-    .hero-subtitle::after {
-      content: '|';
-      display: inline-block;
-      color: var(--color-accent);
-      margin-left: 2px;
-      animation: blink 1.2s step-end infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .body-text {
-      font-size: 14px;
-      font-weight: var(--body-weight);
-      line-height: 1.8;
-      color: var(--color-text);
-      transition: color 0.3s ease;
-    }
-
-    .body-text + .body-text {
-      margin-top: 20px;
-    }
-
-    .section-rule {
-      border: none;
-      border-top: 1px solid var(--color-divider);
-      margin: 0 0 48px;
-    }
-
-    .contact-links {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 64px;
-    }
-
-    .contact-link {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0;
-      text-decoration: none;
-      min-height: 44px;
-      flex: 1 1 0;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 20px;
-      border-radius: 6px;
-      border: 1px solid transparent;
-      color: var(--color-text-secondary);
-      background: var(--color-button-bg);
-      transition: transform 0.15s ease,
-                  box-shadow 0.15s ease,
-                  background-color 0.15s ease,
-                  color 0.15s ease,
-                  border-color 0.15s ease;
-    }
-
-    .contact-link:hover {
-      transform: translateY(-2px);
-      background: var(--color-button-hover-bg);
-      border-color: transparent;
-      color: var(--color-button-hover-text);
-    }
-
-    .contact-link:active {
-      transform: translateY(0);
-    }
-
-    .contact-link:focus-visible,
-    .theme-toggle:focus-visible {
-      outline: 3px solid var(--color-focus);
-      outline-offset: 3px;
-    }
-
-    .theme-toggle {
-      position: fixed;
-      top: 18px;
-      right: 18px;
-      z-index: 10;
-      width: 44px;
-      height: 44px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: transparent;
-      border: 1px solid transparent;
-      border-radius: 999px;
-      color: var(--color-text);
-      cursor: pointer;
-      transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease, background-color 0.15s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .theme-toggle:hover {
-      color: var(--color-accent);
-      transform: translateY(-1px);
-    }
-
-    .theme-toggle:active {
-      transform: translateY(0);
-    }
-
-    .theme-toggle__icon {
-      width: 18px;
-      height: 18px;
-      border: 2px solid currentColor;
-      border-radius: 999px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .theme-toggle__icon::after {
-      content: '';
-      position: absolute;
-      inset: -2px -2px -2px 50%;
-      background: currentColor;
-    }
-
-    [data-theme="dark"] .theme-toggle__icon::after {
-      inset: -2px 50% -2px -2px;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
-
-    @media (max-width: 520px) {
-      body { padding: 34px 18px 40px; }
-
-      .content { max-width: none; }
-
-      .header {
-        gap: 12px;
-        margin-bottom: 38px;
-        padding-right: 52px;
-      }
-
-      .hero-statement {
-        font-size: clamp(32px, 10vw, 40px);
-        margin-bottom: 14px;
-      }
-
-      .hero-subtitle {
-        font-size: 17px;
-        line-height: 1.5;
-        margin-bottom: 34px;
-      }
-
-      .section-rule { margin-bottom: 34px; }
-
-      .body-text {
-        font-size: 15px;
-        line-height: 1.75;
-      }
-
-      .contact-links {
-        margin-top: 42px;
-        gap: 10px;
-      }
-
-      .contact-link {
-        padding-inline: 12px;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jennifer Durand - Digital Marketer</title>
+<meta name="description" content="Jennifer Durand, Digital Marketer basée à Morges. Acquisition de trafic payant, tracking, dashboards, données et automatisation.">
+<link rel="icon" href="jd.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbfbfa; --ink:#1c1d20; --body:#33353a; --muted:#8a8d94; --label:#a9a7a0;
+    --line:#ece9e4; --btn-border:#dcdbd7; --accent:#ff0066;
+    --sans:'Space Grotesk',system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+    --serif:'Instrument Serif',Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg)}
+  ::selection{background:rgba(255,0,102,.18)}
+  a{color:var(--accent);text-decoration:none}
+  body{color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .page{min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:88px 24px 80px}
+  .col{width:100%;max-width:568px}
+  .id{display:flex;align-items:center;gap:14px}
+  .id img{width:46px;height:46px;object-fit:cover;border-radius:50%;display:block}
+  .id .name{font-size:15px;font-weight:500;color:var(--ink)}
+  .id .role{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-top:2px}
+  h1{margin-top:30px;font-family:var(--serif);font-size:46px;font-weight:400;line-height:1.04;letter-spacing:-.01em;color:var(--accent)}
+  .sub{margin-top:14px;font-family:var(--mono);font-size:14px;color:var(--muted)}
+  .bio{margin-top:40px;display:flex;flex-direction:column;gap:18px;font-size:16px;line-height:1.62;color:var(--body)}
+  .bio strong{font-weight:inherit;background-image:linear-gradient(rgba(255,0,102,.3),rgba(255,0,102,.3));background-repeat:no-repeat;background-position:0 88%;background-size:100% .32em}
+  .vol{margin-top:34px;padding-top:28px;border-top:1px solid var(--line)}
+  .label{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--label);margin-bottom:12px}
+  .vol p{font-size:16px;line-height:1.62;color:var(--body)}
+  .ctas{margin-top:38px;display:flex;gap:10px;flex-wrap:wrap}
+  .ctas a{flex:1;min-width:120px;text-align:center;padding:11px 0;border-radius:8px;border:1px solid var(--btn-border);background:#fff;color:var(--ink);font-family:var(--mono);font-size:14px;transition:border-color .15s,color .15s}
+  .ctas a:hover,.ctas a:focus-visible{border-color:var(--accent);color:var(--accent)}
+</style>
 </head>
 <body>
-  <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="true">
-    <span class="theme-toggle__icon" aria-hidden="true"></span>
-  </button>
-  <main class="content">
+<main class="page">
+  <div class="col">
+    <header class="id">
+      <img src="jd.png" alt="Jennifer Durand" width="46" height="46">
+      <div>
+        <div class="name">Jennifer Durand</div>
+        <div class="role">Digital Marketer. Basée à Morges. Chez mes chats.</div>
+      </div>
+    </header>
 
-    <div class="header">
-      <img src="jd.png" alt="Jennifer" class="avatar" width="40" height="40">
-      <div class="header-text">Jennifer · Digital Marketer · Switzerland</div>
+    <h1 lang="en">Marketing without the fluff.</h1>
+    <p class="sub">Data, IA, automatisation &amp; un peu de code.</p>
+
+    <div class="bio">
+      <p>Hello, merci de passer par ici&#8239;!</p>
+      <p>Curieuse de tout, avec un faible pour ce que la majorité fuit&#8239;: la technique. Gratter du code, explorer un jeu de données et je suis aux anges.</p>
+      <p>Je m'occupe de l'acquisition de trafic payant pour un énergéticien, et de tout ce qui va avec&#8239;: tracking, dashboards, landing pages, automatisation. Le fil rouge&#8239;: les <strong>données</strong>. Collecter, analyser et en faire quelque chose d'utile.</p>
+      <p>Avant ça, j'étais Digital Fundraiser pour Médecins Sans Frontières à Genève. J'ai mis en place le tracking de zéro, construit les dashboards de pilotage et contribué à <strong>tripler les dons en ligne</strong>.</p>
     </div>
 
-    <h1 class="hero-statement">Marketing without the fluff.</h1>
-    <p class="hero-subtitle">Data, AI, automation, and a bit of code.</p>
+    <section class="vol">
+      <h2 class="label">Bénévolat</h2>
+      <p>Vous êtes une (petite) organisation, ONG ou association, active pour la protection animale, et vous avez besoin d'aide en communication digitale ou en levée de fonds&#8239;? Écrivez-moi. Je dédie du temps libre aux causes qui me tiennent à cœur.</p>
+    </section>
 
-    <hr class="section-rule">
-
-    <p class="body-text">
-      I live with our cats who are very much in charge, a husband, and a dog still figuring out where he stands. Most weekends we're in the forest.
-    </p>
-
-    <p class="body-text">
-      At a Swiss energy company, I run paid campaigns and everything behind them: tracking, R to wrangle data, dashboards, automations that run on their own. More MVP, less PowerPoint.
-    </p>
-
-    <p class="body-text">
-      Previously: digital fundraiser at Médecins Sans Frontières. Agency before that.
-    </p>
-
-    <p class="body-text">
-      Small NGO needing help with digital communication or fundraising? I dedicate spare time to causes I care about, especially animal welfare and nature conservation. Write me.
-    </p>
-
-    <nav class="contact-links" aria-label="Contact links">
-      <a href="https://www.linkedin.com/in/jenndrd/" class="contact-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="https://github.com/JennDrD" class="contact-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="mailto:durand.jennifer+ws@pm.me" class="contact-link">Email</a>
+    <nav class="ctas">
+      <a href="mailto:durand.jennifer+ws@pm.me">Email</a>
+      <a href="https://www.linkedin.com/in/jenndrd/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/JennDrD" target="_blank" rel="noopener">GitHub</a>
     </nav>
-
-  </main>
-
-  <script>
-    const toggle = document.querySelector('.theme-toggle');
-
-    function applyTheme(theme) {
-      if (theme === 'light') {
-        document.documentElement.removeAttribute('data-theme');
-        toggle.setAttribute('aria-label', 'Switch to dark mode');
-        toggle.setAttribute('aria-pressed', 'false');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        toggle.setAttribute('aria-label', 'Switch to light mode');
-        toggle.setAttribute('aria-pressed', 'true');
-      }
-    }
-
-    let saved;
-    try { saved = localStorage.getItem('theme'); } catch (_) {}
-    applyTheme(saved || 'dark');
-
-    toggle.addEventListener('click', () => {
-      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      try { localStorage.setItem('theme', next); } catch (_) {}
-      applyTheme(next);
-    });
-  </script>
+  </div>
+</main>
 </body>
 </html>
