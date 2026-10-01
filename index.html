@@ -24,7 +24,7 @@
   :root{
     --bg:#fbfbfa; --ink:#1c1d20; --body:#33353a; --muted:#8a8d94; --label:#a9a7a0;
     --line:#ece9e4; --btn-border:#dcdbd7; --accent:#ff0066;
-    --accent-soft:rgba(255,0,102,.18); --accent-mark:rgba(255,0,102,.3); --btn-bg:#fff;
+    --accent-soft:rgba(255,0,102,.18); --accent-mark:rgba(255,0,102,.24); --btn-bg:#fff;
     --sans:'Atkinson Hyperlegible',system-ui,sans-serif;
     --mono:'Martian Mono',ui-monospace,monospace;
     --serif:'Gloock',Georgia,serif;
@@ -44,10 +44,11 @@
   h1{margin-top:30px;font-family:var(--serif);font-size:46px;font-weight:400;line-height:1.05;letter-spacing:-.01em;color:var(--accent)}
   .sub{margin-top:14px;font-family:var(--mono);font-size:12.5px;color:var(--muted)}
   .bio{margin-top:40px;display:flex;flex-direction:column;gap:18px;font-size:16px;line-height:1.62;color:var(--body)}
-  .bio strong{font-weight:inherit;background-image:linear-gradient(var(--accent-mark),var(--accent-mark));background-repeat:no-repeat;background-position:0 88%;background-size:100% .32em}
+  .bio strong{font-weight:inherit;background-image:linear-gradient(var(--accent-mark),var(--accent-mark));background-repeat:no-repeat;background-position:0 90%;background-size:100% .6em;padding:0 .1em;margin:0 -.1em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
   .vol{margin-top:34px;padding-top:28px;border-top:1px solid var(--line)}
   .label{font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--label);margin-bottom:12px}
   .vol p{font-size:16px;line-height:1.62;color:var(--body)}
+  .vol .fn{margin-top:12px;font-size:13px;line-height:1.55;color:var(--muted)}
   .ctas{margin-top:38px;display:flex;gap:10px;flex-wrap:wrap}
   .ctas a{flex:1;min-width:120px;text-align:center;padding:11px 0;border-radius:8px;border:1px solid var(--btn-border);background:var(--btn-bg);color:var(--ink);font-family:var(--mono);font-size:12.5px;transition:border-color .15s,color .15s}
   .ctas a:hover,.ctas a:focus-visible{border-color:var(--accent);color:var(--accent)}
@@ -65,7 +66,7 @@
       <img src="jd-92.png" alt="" width="46" height="46">
       <div>
         <div class="name">Jennifer Durand</div>
-        <div class="role">Digital Marketer. Basée à Morges. Chez mes chats.</div>
+        <div class="role">Digital Marketer. Basée chez mes chats, à Morges.</div>
       </div>
     </header>
 
@@ -73,16 +74,17 @@
     <p class="sub">Data, IA, automatisation &amp; un peu de code.</p>
 
     <div class="bio">
-      <p>Hello, merci de passer par ici&#8239;! :)</p>
-      <p>Curieuse de tout, avec un faible pour la technique. Gratter du code, explorer un jeu de données et je ne vois plus le temps passer.</p>
-      <p>Je m'occupe de l'acquisition de trafic payant pour un énergéticien, et de tout ce qui va avec&#8239;: tracking, dashboards, landing pages, automatisation. Le fil rouge&#8239;: les <strong>données</strong>. Collecter, analyser et en faire quelque chose d'utile.</p>
-      <p>Avant ça, j'étais Digital Fundraiser pour Médecins Sans Frontières à Genève. J'ai mis en place le tracking de zéro, construit les dashboards de pilotage et contribué à <strong>tripler les dons en ligne</strong>.</p>
-      <p>Background&#8239;: Bachelor en économie d'entreprise (HEIG-VD), puis un COS «&#8239;Applied Data Science: Communication &amp; Visualization&#8239;» à l'EPFL.</p>
+      <p>Hello et merci de passer par ici&#8239;! :)</p>
+      <p>Le digital est pour moi un <strong>terrain de jeu inépuisable</strong>. Avec quelques lignes de code, une idée prend forme, des données racontent une histoire, une tâche répétitive disparaît.</p>
+      <p>À Romande Energie, je m'occupe des campagnes digitales. Et tout ce qui se passe dans l'ombre&#8239;: tracking, landing pages, analyse de données.</p>
+      <p>Avant ça, j'ai passé cinq superbes années chez Médecins Sans Frontières, où j'ai vu ce que le digital peut faire pour l'humanitaire. D'abord sur les réseaux sociaux, puis comme digital fundraiser.</p>
+      <p>Ce qui relie ces expériences&#8239;? Le besoin que mon travail ait un <strong>impact positif</strong>&#8239;: financer une aide médicale d'urgence, ou accélérer la transition énergétique.</p>
     </div>
 
     <section class="vol">
       <h2 class="label">Bénévolat</h2>
-      <p>Vous êtes une (petite) organisation, ONG ou association, active pour la protection animale, et vous avez besoin d'aide en communication digitale ou en levée de fonds&#8239;? Écrivez-moi.</p>
+      <p>Je mesure la chance que j'ai de faire un métier que j'aime, pour des causes qui comptent. Vous êtes une (petite*) organisation, ONG ou association, active pour la protection animale ou environnementale&#8239;? Vous avez besoin d'aide en communication digitale ou en levée de fonds&#8239;? Écrivez-moi.</p>
+      <p class="fn">*Au-delà d'une certaine taille, une organisation a selon moi les moyens de payer ces services au juste prix.</p>
     </section>
 
     <nav class="ctas" aria-label="Contact">
