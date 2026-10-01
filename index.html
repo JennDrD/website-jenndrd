@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Jennifer Durand - Digital Marketer</title>
 <meta name="description" content="Jennifer Durand - Digital Marketer. Campagnes digitales, tracking, landing pages, analyse de données.">
 <link rel="icon" href="jd-128.png">
@@ -21,127 +23,353 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --paper:oklch(97.5% .008 78);
-    --ink:oklch(22% .014 30);
-    --body:oklch(34% .014 30);
-    --mute:oklch(54% .014 30);
-    --rule:oklch(88% .01 78);
-    --rose:oklch(63% .252 4);          /* grand texte : titre */
-    --rose-ink:oklch(54% .21 4);       /* petit texte, survols, focus : 5.3:1 */
-    --mark:oklch(63% .252 4 / .24);    /* surlignage */
-    --selection:oklch(63% .252 4 / .18);
-    --serif:'Literata',Georgia,serif;
-    --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px;
-    --ease:cubic-bezier(.25,1,.5,1);
+  :root {
+    --color-bg: oklch(97.5% .008 78);
+    --color-text: oklch(34% .014 30);
+    --color-text-strong: oklch(22% .014 30);
+    --color-text-muted: oklch(54% .014 30);
+    --color-border: oklch(88% .01 78);
+    --color-accent: oklch(63% .252 4);
+    --color-accent-strong: oklch(54% .21 4);
+    --color-highlight: oklch(63% .252 4 / .24);
+    --color-selection: oklch(63% .252 4 / .18);
+
+    --font-serif: 'Literata', Georgia, serif;
+    --text-label: .6875rem;
+    --text-small: .875rem;
+    --text-link: .9375rem;
+    --text-body: 1.03125rem;
+    --text-name: 1.1875rem;
+    --text-title: clamp(1.875rem, 3.6vw, 2.5rem);
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 48px;
+    --measure: 60ch;
+    --ease-out-quart: cubic-bezier(.25, 1, .5, 1);
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{color-scheme:light}
-  html,body{background:var(--paper)}
-  ::selection{background:var(--selection)}
-  body{font-family:var(--serif);font-size:1.03125rem;line-height:1.62;color:var(--body);-webkit-font-smoothing:antialiased}
-  a{color:inherit;text-decoration:none}
-  p{text-wrap:pretty}
 
-  .wrap{max-width:1100px;margin:0 auto;padding:clamp(28px,6vh,72px) clamp(20px,5vw,56px) 88px;
-        display:grid;grid-template-columns:minmax(170px,230px) minmax(0,1fr);gap:clamp(32px,6vw,88px);align-items:start}
 
-  /* colonne d'identite */
-  .side{position:sticky;top:var(--s6)}
-  .side img{width:64px;height:64px;display:block}
-  .nm{margin-top:var(--s4);font-size:1.1875rem;font-weight:600;color:var(--ink);line-height:1.3}
-  .rl{margin-top:var(--s1);font-size:.875rem;font-style:italic;line-height:1.55;color:var(--mute)}
-  .links{margin-top:var(--s5);display:flex;flex-direction:column}
-  .links a{display:flex;align-items:center;gap:var(--s3);padding:10px 0;font-size:.9375rem;color:var(--ink);transition:color .15s}
-  .links svg{width:16px;height:16px;flex:none;color:var(--mute);transition:color .15s,transform .25s var(--ease)}
-  .links a:hover,.links a:focus-visible{color:var(--rose-ink)}
-  .links a:hover svg,.links a:focus-visible svg{color:var(--rose-ink);transform:translateX(2px)}
-  .links a:focus-visible{outline:2px solid var(--rose-ink);outline-offset:2px;border-radius:2px}
-
-  /* contenu */
-  h1{margin-top:var(--s1);font-size:clamp(1.875rem,3.6vw,2.5rem);font-weight:600;line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
-  h1 em{font-style:normal;color:var(--rose)}
-  .sub{margin-top:var(--s3);font-size:.90625rem;font-style:italic;color:var(--mute)}
-  .bio{margin-top:var(--s6);max-width:60ch}
-  .bio p + p{margin-top:var(--s4)}
-  .bio strong{font-weight:inherit;background-image:linear-gradient(var(--mark),var(--mark));background-repeat:no-repeat;
-              background-position:0 90%;background-size:100% .6em;padding:0 .1em;margin:0 -.1em;
-              -webkit-box-decoration-break:clone;box-decoration-break:clone}
-  .vol{margin-top:var(--s7);padding-top:var(--s5);border-top:1px solid var(--rule);max-width:60ch}
-  .lbl{margin-bottom:var(--s3);font-size:.6875rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--rose-ink)}
-  .fn{margin-top:var(--s3);font-size:.875rem;line-height:1.55;color:var(--mute)}
-
-  /* delight */
-  .cat{position:relative;display:inline-block}
-  .cat::before{content:"";position:absolute;left:50%;bottom:calc(100% - 5px);width:40px;height:25px;margin-left:-20px;
-               background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 25'%3E%3Cg stroke='%23302826' stroke-width='.8' stroke-linecap='round'%3E%3Cpath d='M12.5 16.6 2.5 14.6M12.5 18.4 2.8 19.4M27.5 16.6 37.5 14.6M27.5 18.4 37.2 19.4'/%3E%3C/g%3E%3Cpath d='M9 23V12.5c0-2.6.8-4.6 2-6L10 .8l6 3.6c2.4-.7 5.6-.7 8 0l6-3.6-1 5.7c1.2 1.4 2 3.4 2 6V23z' fill='%23302826'/%3E%3Cpath d='M11.6 3.6 12.6 7 14.7 5.4zM28.4 3.6 27.4 7 25.3 5.4z' fill='%235a4a46'/%3E%3Cellipse cx='15.8' cy='13.2' rx='1.9' ry='2.3' fill='%23f3c86b'/%3E%3Cellipse cx='24.2' cy='13.2' rx='1.9' ry='2.3' fill='%23f3c86b'/%3E%3Cellipse cx='15.8' cy='13.4' rx='.6' ry='1.7' fill='%23302826'/%3E%3Cellipse cx='24.2' cy='13.4' rx='.6' ry='1.7' fill='%23302826'/%3E%3Cpath d='M18.9 17.2h2.2L20 18.5z' fill='%23e89aa8'/%3E%3Cellipse cx='13.6' cy='23.2' rx='4.2' ry='1.8' fill='%23302826'/%3E%3Cellipse cx='26.4' cy='23.2' rx='4.2' ry='1.8' fill='%23302826'/%3E%3C/svg%3E") no-repeat center/contain;
-               opacity:0;transform:translateY(7px);transition:opacity .18s,transform .4s var(--ease);pointer-events:none}
-  .rl:hover .cat::before,.side:focus-within .cat::before{opacity:1;transform:none}
-  .wink{position:relative;display:inline-block}
-  .wink::after{content:";)";content:";)" / "";position:absolute;left:0;top:0;opacity:0;transition:opacity .12s}
-  .hi:hover .wink > span{opacity:0}
-  .hi:hover .wink::after{opacity:1}
-  @keyframes mark{from{background-size:0% .6em}to{background-size:100% .6em}}
-  .bio strong{animation:mark .9s cubic-bezier(.16,1,.3,1) both}
-  .bio p:nth-child(2) strong{animation-delay:.55s}
-  .bio p:nth-child(5) strong{animation-delay:.85s}
-
-  @media (max-width:760px){
-    .wrap{grid-template-columns:1fr}
-    .side{position:static;display:grid;grid-template-columns:64px 1fr;column-gap:var(--s4);align-items:center}
-    .nm{margin-top:0;align-self:end}
-    .rl{grid-column:2;align-self:start}
-    .side img{grid-row:span 2}
-    .links{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;column-gap:var(--s5);margin-top:var(--s3)}
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
-  @media (prefers-reduced-motion:reduce){
-    .bio strong{animation:none}
-    .cat::before,.wink::after,.links svg,.links a{transition:none}
+  html {
+    color-scheme: light;
+    background: var(--color-bg);
   }
-  @media print{
-    .wrap{display:block;padding:0}
-    .side{position:static}
-    .links{flex-direction:row;flex-wrap:wrap;column-gap:var(--s5)}
-    .links svg,.cat::before,.wink::after{display:none}
-    .links a::after{content:" (" attr(href) ")";color:var(--mute)}
-    .bio strong{animation:none}
+  ::selection {
+    background: var(--color-selection);
+  }
+  body {
+    font-family: var(--font-serif);
+    font-size: var(--text-body);
+    line-height: 1.62;
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  p {
+    text-wrap: pretty;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(170px, 230px) minmax(0, 1fr);
+    gap: clamp(32px, 6vw, 88px);
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: clamp(28px, 6vh, 72px) clamp(20px, 5vw, 56px) 88px;
+  }
+
+  .identity {
+    position: sticky;
+    top: var(--space-6);
+  }
+  .identity-photo {
+    display: block;
+    width: 64px;
+    height: 64px;
+  }
+  .identity-name {
+    margin-top: var(--space-4);
+    font-size: var(--text-name);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-text-strong);
+  }
+  .identity-role {
+    margin-top: var(--space-1);
+    font-size: var(--text-small);
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--color-text-muted);
+  }
+
+  .contact {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--space-5);
+  }
+  .contact a {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 10px 0;
+    font-size: var(--text-link);
+    color: var(--color-text-strong);
+    transition: color .15s;
+  }
+  .contact svg {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-muted);
+    transition: color .15s, transform .25s var(--ease-out-quart);
+  }
+  .contact a:hover,
+  .contact a:focus-visible {
+    color: var(--color-accent-strong);
+  }
+  .contact a:hover svg,
+  .contact a:focus-visible svg {
+    color: var(--color-accent-strong);
+    transform: translateX(2px);
+  }
+  .contact a:focus-visible {
+    outline: 2px solid var(--color-accent-strong);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  h1 {
+    margin-top: var(--space-1);
+    font-size: var(--text-title);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -.02em;
+    color: var(--color-text-strong);
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--color-accent);
+  }
+  .tagline {
+    margin-top: var(--space-3);
+    font-size: var(--text-small);
+    font-style: italic;
+    color: var(--color-text-muted);
+  }
+
+  .bio {
+    max-width: var(--measure);
+    margin-top: var(--space-6);
+  }
+  .bio p + p {
+    margin-top: var(--space-4);
+  }
+
+  /* Each highlight sets its own --highlight-delay inline in the HTML. */
+  @keyframes draw-highlight {
+    from { background-size: 0% .6em; }
+    to   { background-size: 100% .6em; }
+  }
+  .highlight {
+    font-weight: inherit;
+    padding: 0 .1em;
+    margin: 0 -.1em;
+    background-image: linear-gradient(var(--color-highlight), var(--color-highlight));
+    background-repeat: no-repeat;
+    background-position: 0 90%;
+    background-size: 100% .6em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    animation: draw-highlight .9s cubic-bezier(.16, 1, .3, 1) var(--highlight-delay, 0s) both;
+  }
+
+  .volunteering {
+    max-width: var(--measure);
+    margin-top: var(--space-7);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-border);
+  }
+  .section-label {
+    margin-bottom: var(--space-3);
+    font-size: var(--text-label);
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--color-accent-strong);
+  }
+  .footnote {
+    margin-top: var(--space-3);
+    font-size: var(--text-small);
+    line-height: 1.55;
+    color: var(--color-text-muted);
+  }
+
+  .cat {
+    position: relative;
+    display: inline-block;
+  }
+  .cat::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% - 5px);
+    width: 40px;
+    height: 25px;
+    margin-left: -20px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 25'%3E%3Cg stroke='%23302826' stroke-width='.8' stroke-linecap='round'%3E%3Cpath d='M12.5 16.6 2.5 14.6M12.5 18.4 2.8 19.4M27.5 16.6 37.5 14.6M27.5 18.4 37.2 19.4'/%3E%3C/g%3E%3Cpath d='M9 23V12.5c0-2.6.8-4.6 2-6L10 .8l6 3.6c2.4-.7 5.6-.7 8 0l6-3.6-1 5.7c1.2 1.4 2 3.4 2 6V23z' fill='%23302826'/%3E%3Cpath d='M11.6 3.6 12.6 7 14.7 5.4zM28.4 3.6 27.4 7 25.3 5.4z' fill='%235a4a46'/%3E%3Cellipse cx='15.8' cy='13.2' rx='1.9' ry='2.3' fill='%23f3c86b'/%3E%3Cellipse cx='24.2' cy='13.2' rx='1.9' ry='2.3' fill='%23f3c86b'/%3E%3Cellipse cx='15.8' cy='13.4' rx='.6' ry='1.7' fill='%23302826'/%3E%3Cellipse cx='24.2' cy='13.4' rx='.6' ry='1.7' fill='%23302826'/%3E%3Cpath d='M18.9 17.2h2.2L20 18.5z' fill='%23e89aa8'/%3E%3Cellipse cx='13.6' cy='23.2' rx='4.2' ry='1.8' fill='%23302826'/%3E%3Cellipse cx='26.4' cy='23.2' rx='4.2' ry='1.8' fill='%23302826'/%3E%3C/svg%3E") no-repeat center / contain;
+    opacity: 0;
+    transform: translateY(7px);
+    transition: opacity .18s, transform .4s var(--ease-out-quart);
+    pointer-events: none;
+  }
+  .identity-role:hover .cat::before,
+  .identity:focus-within .cat::before {
+    opacity: 1;
+    transform: none;
+  }
+
+  .wink {
+    position: relative;
+    display: inline-block;
+  }
+  .wink::after {
+    content: ";)"; /* fallback for browsers without alt-text support in content */
+    content: ";)" / "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity .12s;
+  }
+  .greeting:hover .wink > span {
+    opacity: 0;
+  }
+  .greeting:hover .wink::after {
+    opacity: 1;
+  }
+
+  @media (max-width: 760px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
+    .identity {
+      position: static;
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      column-gap: var(--space-4);
+      align-items: center;
+    }
+    .identity-photo {
+      grid-row: span 2;
+    }
+    .identity-name {
+      margin-top: 0;
+      align-self: end;
+    }
+    .identity-role {
+      grid-column: 2;
+      align-self: start;
+    }
+    .contact {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      flex-wrap: wrap;
+      column-gap: var(--space-5);
+      margin-top: var(--space-3);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .highlight {
+      animation: none;
+    }
+    .cat::before,
+    .wink::after,
+    .contact a,
+    .contact svg {
+      transition: none;
+    }
+  }
+
+  @media print {
+    .layout {
+      display: block;
+      padding: 0;
+    }
+    .identity {
+      position: static;
+    }
+    .contact {
+      flex-direction: row;
+      flex-wrap: wrap;
+      column-gap: var(--space-5);
+    }
+    .contact svg,
+    .cat::before,
+    .wink::after {
+      display: none;
+    }
+    .contact a::after {
+      content: " (" attr(href) ")";
+      color: var(--color-text-muted);
+    }
+    .highlight {
+      animation: none;
+    }
   }
 </style>
 </head>
 <body>
-<!--
-  Salut toi qui lis le code source :)
-  Ce site est fait main, en HTML et CSS. Zéro JavaScript.
-  Une question, une idée ? durand.jennifer+ws@pm.me
--->
-<div class="wrap">
-  <header class="side">
-    <img src="jd-128.png" alt="" width="64" height="64">
-    <div class="nm">Jennifer Durand</div>
-    <div class="rl">Digital Marketer. Basée chez mes <span class="cat">chats</span>, à Morges.</div>
-    <nav class="links" aria-label="Contact">
-      <a href="mailto:durand.jennifer+ws@pm.me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.8 6.6 8.2 6.3 8.2-6.3"/></svg><span>Email</span></a>
-      <a href="https://www.linkedin.com/in/jenndrd/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3zM9.5 9.75h3.8v1.5h.05c.53-1 1.84-2.05 3.78-2.05 4.04 0 4.79 2.66 4.79 6.12v5.43h-4v-4.8c0-1.15-.02-2.62-1.6-2.62-1.6 0-1.84 1.25-1.84 2.54v4.88h-4z"/></svg><span>LinkedIn</span></a>
-      <a href="https://github.com/JennDrD" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a>
+<div class="layout">
+  <header class="identity">
+    <img class="identity-photo" src="jd-128.png" alt="" width="64" height="64">
+    <p class="identity-name">Jennifer Durand</p>
+    <p class="identity-role">Digital Marketer. Basée chez mes <span class="cat">chats</span>, à Morges.</p>
+    <nav class="contact" aria-label="Contact">
+      <a href="mailto:durand.jennifer+ws@pm.me">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.8 6.6 8.2 6.3 8.2-6.3"/></svg>
+        <span>Email</span>
+      </a>
+      <a href="https://www.linkedin.com/in/jenndrd/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3zM9.5 9.75h3.8v1.5h.05c.53-1 1.84-2.05 3.78-2.05 4.04 0 4.79 2.66 4.79 6.12v5.43h-4v-4.8c0-1.15-.02-2.62-1.6-2.62-1.6 0-1.84 1.25-1.84 2.54v4.88h-4z"/></svg>
+        <span>LinkedIn</span>
+      </a>
+      <a href="https://github.com/JennDrD" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
     </nav>
   </header>
 
   <main>
     <h1 lang="en">Marketing without the <em>fluff.</em></h1>
-    <p class="sub">Data, IA, automatisation &amp; un peu de code.</p>
+    <p class="tagline">Data, IA, automatisation &amp; un peu de code.</p>
 
     <div class="bio">
-      <p class="hi">Hello et merci de passer par ici&#8239;! <span class="wink"><span>:)</span></span></p>
-      <p>Le digital est pour moi un <strong>terrain de jeu inépuisable</strong>. Avec quelques lignes de code, une idée prend forme, des données racontent une histoire, une tâche répétitive disparaît.</p>
+      <p class="greeting">Hello et merci de passer par ici&#8239;! <span class="wink"><span>:)</span></span></p>
+      <p>Le digital est pour moi un <strong class="highlight" style="--highlight-delay: .55s">terrain de jeu inépuisable</strong>. Avec quelques lignes de code, une idée prend forme, des données racontent une histoire, une tâche répétitive disparaît.</p>
       <p>À Romande Energie, je m'occupe des campagnes digitales. Et de tout ce qui se passe dans l'ombre&#8239;: tracking, landing pages, analyse de données.</p>
       <p>Avant ça, j'ai passé cinq superbes années chez Médecins Sans Frontières, où j'ai vu ce que le digital peut faire pour l'humanitaire. D'abord sur les réseaux sociaux, puis comme digital fundraiser.</p>
-      <p>Mes projets doivent avoir un <strong>impact positif</strong>, comme financer une aide médicale d'urgence ou accélérer la transition énergétique.</p>
+      <p>Mes projets doivent avoir un <strong class="highlight" style="--highlight-delay: .85s">impact positif</strong>, comme financer une aide médicale d'urgence ou accélérer la transition énergétique.</p>
     </div>
 
-    <section class="vol">
-      <h2 class="lbl">Bénévolat</h2>
+    <section class="volunteering">
+      <h2 class="section-label">Bénévolat</h2>
       <p>Ayant la chance de faire un métier que j'aime, j'offre un peu de mon temps à de petites* associations/organisations pour la protection animale ou environnementale. Besoin d'aide en marketing digital ou levée de fonds&#8239;? Écrivez-moi.</p>
-      <p class="fn">*Au-delà d'une certaine taille, une organisation a selon moi les moyens de s'offrir ces services.</p>
+      <p class="footnote">*Au-delà d'une certaine taille, une organisation a selon moi les moyens de s'offrir ces services.</p>
     </section>
   </main>
 </div>
