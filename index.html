@@ -42,7 +42,6 @@
     --text-title: clamp(1.875rem, 3.6vw, 2.5rem);
 
     --space-1: 4px;
-    --space-2: 8px;
     --space-3: 12px;
     --space-4: 16px;
     --space-5: 24px;
@@ -162,11 +161,14 @@
     font-style: normal;
     color: var(--color-accent);
   }
-  .tagline {
-    margin-top: var(--space-3);
+  .tagline,
+  .book-subtitle {
     font-size: var(--text-small);
     font-style: italic;
     color: var(--color-text-muted);
+  }
+  .tagline {
+    margin-top: var(--space-3);
   }
 
   .bio {
@@ -195,7 +197,7 @@
     animation: draw-highlight .9s cubic-bezier(.16, 1, .3, 1) var(--highlight-delay, 0s) both;
   }
 
-  .volunteering {
+  .page-section {
     max-width: var(--measure);
     margin-top: var(--space-7);
     padding-top: var(--space-5);
@@ -216,7 +218,46 @@
     color: var(--color-text-muted);
   }
 
-  .cat {
+  .book-list {
+    list-style: none;
+  }
+  .book {
+    --book-padding-top: var(--space-4);
+    position: relative;
+    padding: var(--book-padding-top) 0 var(--space-4) calc(12px + var(--space-3));
+  }
+  .book:first-child {
+    --book-padding-top: 0px;
+  }
+  .book:last-child {
+    padding-bottom: 0;
+  }
+  .book + .book {
+    border-top: 1px solid var(--color-border);
+  }
+  .book::before {
+    content: "";
+    position: absolute;
+    top: calc(var(--book-padding-top) + 4px);
+    left: 0;
+    width: 12px;
+    height: 20px;
+    background: var(--color-accent-strong);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%);
+  }
+  .book-title {
+    display: block;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--color-text-strong);
+  }
+  .book-author {
+    margin-top: var(--space-1);
+    font-size: var(--text-small);
+  }
+
+  .cat,
+  .wink {
     position: relative;
     display: inline-block;
   }
@@ -240,10 +281,6 @@
     transform: none;
   }
 
-  .wink {
-    position: relative;
-    display: inline-block;
-  }
   .wink::after {
     content: ";)"; /* fallback for browsers without alt-text support in content */
     content: ";)" / "";
@@ -365,10 +402,26 @@
       <p>Mes projets doivent avoir un <strong class="highlight" style="--highlight-delay: .85s">impact positif</strong>, comme financer une aide médicale d'urgence ou accélérer la transition énergétique.</p>
     </div>
 
-    <section class="volunteering">
+    <section class="page-section">
       <h2 class="section-label">Bénévolat</h2>
       <p>Ayant la chance de faire un métier que j'aime, j'offre un peu de mon temps à de petites* associations/organisations pour la protection animale ou environnementale. Besoin d'aide en marketing digital ou levée de fonds&#8239;? Écrivez-moi.</p>
       <p class="footnote">*Au-delà d'une certaine taille, une organisation a selon moi les moyens de s'offrir ces services.</p>
+    </section>
+
+    <section class="page-section">
+      <h2 class="section-label">Sur ma table · octobre 2026</h2>
+      <ul class="book-list">
+        <li class="book">
+          <cite class="book-title">Dealers de mots</cite>
+          <p class="book-subtitle">La langue comme capital de l'intelligence artificielle</p>
+          <p class="book-author">Frédéric Kaplan</p>
+        </li>
+        <li class="book">
+          <cite class="book-title">Notre liberté de penser</cite>
+          <p class="book-subtitle">Comment défendre nos démocraties face aux menaces numériques</p>
+          <p class="book-author">Isabelle Chappuis</p>
+        </li>
+      </ul>
     </section>
   </main>
 </div>
