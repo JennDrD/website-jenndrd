@@ -28,10 +28,11 @@
     --color-text-strong: oklch(22% .014 30);
     --color-text-muted: oklch(54% .014 30);
     --color-border: oklch(88% .01 78);
-    --color-accent: oklch(63% .252 4);
-    --color-accent-strong: oklch(54% .21 4);
-    --color-highlight: oklch(63% .252 4 / .24);
-    --color-selection: oklch(63% .252 4 / .18);
+    --color-accent: #8a94e6;
+    --color-accent-strong: #3b4cc0;
+    --color-highlight: rgb(138 148 230 / .34);
+    --color-highlight-strong: rgb(138 148 230 / .55);
+    --color-selection: rgb(138 148 230 / .25);
 
     --font-serif: 'Literata', Georgia, serif;
     --text-label: .6875rem;
@@ -138,6 +139,19 @@
   .contact a:focus-visible {
     color: var(--color-accent-strong);
   }
+  .contact span {
+    padding: 0 .1em;
+    margin: 0 -.1em;
+    background-image: linear-gradient(var(--color-highlight), var(--color-highlight));
+    background-repeat: no-repeat;
+    background-position: 0 90%;
+    background-size: 0% .6em;
+    transition: background-size .3s var(--ease-out-quart);
+  }
+  .contact a:hover span,
+  .contact a:focus-visible span {
+    background-size: 100% .6em;
+  }
   .contact a:hover svg,
   .contact a:focus-visible svg {
     color: var(--color-accent-strong);
@@ -159,7 +173,12 @@
   }
   h1 em {
     font-style: normal;
-    color: var(--color-accent);
+    padding: 0 .08em;
+    margin: 0 -.08em;
+    background-image: linear-gradient(var(--color-highlight-strong), var(--color-highlight-strong));
+    background-repeat: no-repeat;
+    background-position: 0 90%;
+    background-size: 100% .6em;
   }
   .tagline,
   .book-subtitle {
@@ -242,7 +261,7 @@
     left: 0;
     width: 12px;
     height: 20px;
-    background: var(--color-accent-strong);
+    background: var(--color-accent);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%);
   }
   .book-title {
@@ -335,6 +354,7 @@
     .cat::before,
     .wink::after,
     .contact a,
+    .contact span,
     .contact svg {
       transition: none;
     }
@@ -391,7 +411,7 @@
   </header>
 
   <main>
-    <h1 lang="en">Marketing without the <em>fluff.</em></h1>
+    <h1 lang="en">Marketing without the <em>fluff</em></h1>
     <p class="tagline">Data, IA, automatisation &amp; un peu de code.</p>
 
     <div class="bio">
